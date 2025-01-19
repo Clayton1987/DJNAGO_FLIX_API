@@ -17,7 +17,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from django.http import JsonResponse
-from genres.views import genre_view
+from genres.views import genre_create_list_view, genre_detail_view
 
 # def hello_view(request):
 # 	return JsonResponse({'message': 'Hello World'})
@@ -27,6 +27,7 @@ from genres.views import genre_view
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('genres/', genre_view, name='genre-list'),
+    path('genres/', genre_create_list_view, name='genre-create-list'),
+    path('genres/<int:pk>/', genre_detail_view , name='genre-detail-view'),
 	# path('hello/', hello_view),
 ]
