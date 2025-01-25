@@ -27,6 +27,7 @@ def genre_detail_view(request, pk):
     if request.method == 'GET':
         data = {'id': genre.id, 'name': genre.name}
         return JsonResponse(data)
+    
     elif request.method == 'PUT':
         data = json.loads(request.body.decode('utf-8'))
         genre.name = data['name']
