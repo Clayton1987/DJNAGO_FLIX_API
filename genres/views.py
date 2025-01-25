@@ -4,7 +4,22 @@ from genres.models import Genre
 import json
 from django.views.decorators.csrf import csrf_exempt
 from django.shortcuts import get_object_or_404
+from rest_framework import generics
+from genres.serializers import GenreSerializer
 
+
+########CLASS BASE VIEWS
+
+class GenreCreateListView(generics.ListCreateAPIView):
+    #queryset = Genre.objects.filter(name='Terror')
+    queryset = Genre.objects.all()    
+    serializer_class = GenreSerializer
+
+class GenreRetrieveUpdateDestroyView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Genre.objects.all()
+    serializer_class = GenreSerializer
+
+########FUNCTIONS VIEWS
 # Create your views here.
 @csrf_exempt
 def genre_create_list_view(request):
@@ -37,3 +52,5 @@ def genre_detail_view(request, pk):
     elif request.method == 'DELETE':
         genre.delete()
         return JsonResponse({'message': 'Genero excluido com sucesso'}, status=204)
+    
+
