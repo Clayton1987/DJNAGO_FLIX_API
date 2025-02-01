@@ -19,7 +19,7 @@ class GenreRetrieveUpdateDestroyView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Genre.objects.all()
     serializer_class = GenreSerializer
 
-########FUNCTIONS VIEWS
+########FUNCTIONS VIEWS + SERIALIZERS
 # Create your views here.
 @csrf_exempt
 def genre_create_list_view(request):
